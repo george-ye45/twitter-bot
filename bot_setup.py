@@ -48,8 +48,7 @@ class TwitterBot:
         id_list = self.search()
         for tweet in id_list:
             try:
-                return None
-                #self.api.retweet(tweet)
+                self.api.retweet(tweet)
             except NameError:
                 print(NameError)
 
