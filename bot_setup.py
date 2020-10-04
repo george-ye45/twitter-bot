@@ -30,10 +30,8 @@ class TwitterBot:
         while new_category == None or new_category == self.prev_category:
             new_category = random.choice(self.categories)
         self.category = new_category
-        current_time = datetime.now().strftime("%H:%M:%S")
-        if current_time == "12:00:00":
-            current_day = self.days[date.today().weekday()]
-            return self.api.update_status("%s news! Today's Topic: %s" % (current_day, category))
+        current_day = self.days[date.today().weekday()]
+        return self.api.update_status("%s news! Today's Topic: %s" % (current_day, category))
 
     def search(self):
         all_results = (self.api.search(q = self.category, count = 5, lang = 'en', result_type = 'popular')['statuses'])
@@ -44,7 +42,6 @@ class TwitterBot:
         return result_ids
     
     def retweet(self):
-        print("Retweeting")
         id_list = self.search()
         for tweet in id_list:
             try:
