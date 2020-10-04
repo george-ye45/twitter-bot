@@ -31,7 +31,7 @@ class TwitterBot:
             new_category = random.choice(self.categories)
         self.category = new_category
         current_time = datetime.now().strftime("%H:%M:%S")
-        if current_time == "00:00:00":
+        if current_time == "12:00:00":
             current_day = self.days[date.today().weekday()]
             return self.api.update_status("%s news! Today's Topic: %s" % (current_day, category))
 
